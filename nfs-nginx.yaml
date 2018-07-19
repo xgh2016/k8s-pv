@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nfs-nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+      - mountPath: "/usr/share/nginx/html"
+        name: wwwroot
+  volumes:
+    - name: wwwroot
+      persistentVolumeClaim:
+         claimName: pvc-nginx
